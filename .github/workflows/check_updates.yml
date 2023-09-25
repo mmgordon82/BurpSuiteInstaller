@@ -31,10 +31,10 @@ jobs:
 
       - name: Get latest release from GitHub
         id: last_release
-        uses: pozetroninc/github-action-get-latest-release@master
+        uses: InsonusK/get-latest-release@v1.0.1
         with:
-          repo: ${{ github.repository }}
-          token: ${{ secrets.GITHUB_TOKEN }}
+          myToken: ${{ github.token }}
+          view_top: 1
 
       - name: Install Golang
         uses: actions/setup-go@v3
@@ -46,7 +46,7 @@ jobs:
         run: |
           go build -o version-updater version-updater.go
           chmod +x ./version-updater
-          lastversion=$(echo -n ${{ steps.last_release.outputs.release }})
+          lastversion=$(echo -n ${{ steps.last_release.outputs.tag_name }})
           version=$(./version-updater)
           echo "latest=$version" >> $GITHUB_OUTPUT
           echo "Updated version hashes: $lastversion to $version"
