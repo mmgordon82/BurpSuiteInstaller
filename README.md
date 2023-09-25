@@ -1,17 +1,9 @@
 <a id="readme-top"></a>
 
-<style>
-  .responsive-img {
-    max-height: 150px;
-    max-width: 100%;
-    width: auto;
-  }
-</style>
-
 <br />
 <div align="center">
   <a href="https://github.com/mmgordon82/BurpSuiteInstaller">
-    <img src="readme-assets/title-logo.png" alt="Logo" class="responsive-img">
+    <img src="readme-assets/title-logo.png" alt="Logo">
   </a>
 
 <h3 align="center">Burp Suite Cracked Activator (Keygen and Loader + Easy Install)</h3>
