@@ -1,13 +1,20 @@
 <a id="readme-top"></a>
 
+<style>
+  .responsive-img {
+    max-height: 150px;
+    max-width: 100%;
+    width: auto;
+  }
+</style>
+
 <br />
 <div align="center">
   <a href="https://github.com/mmgordon82/BurpSuiteInstaller">
-    <img src="readme-assets/title-logo.png" alt="Logo" height="150">
+    <img src="readme-assets/title-logo.png" alt="Logo" class="responsive-img">
   </a>
 
 <h3 align="center">Burp Suite Cracked Activator (Keygen and Loader + Easy Install)</h3>
-<h3 align="center">Version 2023.10.1.1</h3>
 
   <p align="center">
     Install the most updated versions of Burp Suite (Pro) with easy-to-use installers and instructions in an automated fashion.
