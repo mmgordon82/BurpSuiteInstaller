@@ -34,7 +34,7 @@ jobs:
 
           $url = 'https://portswigger-cdn.net/burp/releases/download?product=pro&type=Jar&version=${{ inputs.version }}'
           Invoke-WebRequest -OutFile 'burpsuite_pro.jar' -Uri $url
-          Invoke-WebRequest -OutFile 'burploader.jar' -Uri 'https://github.com/h3110w0r1d-y/BurpLoaderKeygen/releases/latest/download/BurpLoaderKeygen.jar'
+          Move-Item '..\keygen\BurpLoaderKeygen.jar' 'burploader.jar'
 
           cmd /c .\make-installer-gh-action.bat .\burpsuite_pro.jar ${{ inputs.version }}
       
@@ -58,7 +58,7 @@ jobs:
         run: |
           cd .\windows-patcher\
           mkdir Build
-          Invoke-WebRequest -OutFile 'burploader.jar' -Uri 'https://github.com/h3110w0r1d-y/BurpLoaderKeygen/releases/latest/download/BurpLoaderKeygen.jar'
+          Move-Item '..\keygen\BurpLoaderKeygen.jar' 'burploader.jar'
           cmd /c .\make-patcher-gh-action.bat
       
       - name: Upload Artifact

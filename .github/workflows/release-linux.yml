@@ -21,18 +21,11 @@ jobs:
         with:
           envFilePath: .github/variables/global.env
       
-      - name: Download Latest Keygen/Loader
-        uses: robinraju/release-downloader@v1.7
-        with:
-          repository: "h3110w0r1d-y/BurpLoaderKeygen"
-          latest: true
-          fileName: BurpLoaderKeygen.jar
-      
       - name: Build Patcher for Linux
         run: |
           cd linux/
           mkdir archive
-          mv ../BurpLoaderKeygen.jar archive/
+          mv ../keygen/BurpLoaderKeygen.jar archive/
           mv burp-suite-patch.sh archive/
           chmod a+x archive/burp-suite-patch.sh
           chmod a+x archive/BurpLoaderKeygen.jar

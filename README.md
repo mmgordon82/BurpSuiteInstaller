@@ -50,6 +50,8 @@ This repo includes:
  - `patcher`, for those who prefer installing the official releases of Burp - activates the existing installed Burp.
 
 The keygen used is written by [h3110w0r1d-y](https://github.com/h3110w0r1d-y/BurpLoaderKeygen).
+After receiving a DMCA takedown notice, the original repo was taken down. I have manually added the keygen to this repo.
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
