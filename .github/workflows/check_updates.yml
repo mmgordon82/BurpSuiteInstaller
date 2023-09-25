@@ -29,6 +29,13 @@ jobs:
         with:
           envFilePath: .github/variables/global.env
 
+      - name: Get latest release from GitHub
+        id: last_release
+        uses: pozetroninc/github-action-get-latest-release@master
+        with:
+          repo: ${{ github.repository }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Install Golang
         uses: actions/setup-go@v3
         with:
@@ -39,36 +46,17 @@ jobs:
         run: |
           go build -o version-updater version-updater.go
           chmod +x ./version-updater
-          currenthash=$(md5sum $BURP_VERSION_FILE | cut -d ' ' -f 1)
-          ./version-updater > $BURP_VERSION_FILE
-          rm -f ./version-updater
-          version=$(cat ${{ env.BURP_VERSION_FILE }})
+          lastversion=$(echo -n ${{ steps.last_release.outputs.release }})
+          version=$(./version-updater)
           echo "latest=$version" >> $GITHUB_OUTPUT
-          latesthash=$(md5sum $BURP_VERSION_FILE | cut -d ' ' -f 1)
-          echo "Updated version hashes: $currenthash to $latesthash"
-          if [ "$currenthash" != "$latesthash" ]; then
+          echo "Updated version hashes: $lastversion to $version"
+          if [ "$lastversion" != "$version" ]; then
             echo "### 🚀 New Version - $version" >> $GITHUB_STEP_SUMMARY
             echo "changes_detected=true" >> $GITHUB_OUTPUT
           else
             echo "### Up to date! ($version)" >> $GITHUB_STEP_SUMMARY
             echo "changes_detected=false" >> $GITHUB_OUTPUT
           fi
-
-      - name: Generate README.md
-        uses: cuchi/jinja2-action@v1.2.0
-        with:
-          template: readme-assets/README.md.j2
-          output_file: README.md
-          strict: true
-          variables: |
-            burp_version=${{ steps.version.outputs.latest }}
-
-      - name: Commit & Push
-        id: commit
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: "[AUTO] Update Burp Version"
-          file_pattern: ${{ env.BURP_VERSION_FILE }} README.md 
 
   create_release:
     # Creates a new release if there were changes detected in the previous job.
