@@ -93,6 +93,8 @@ Download and install the [official installer from PortSwigger](https://portswigg
 
 After the installation is complete, download and run the [patcher for Windows](https://github.com/mmgordon82/BurpSuiteInstaller/releases/latest) and run it.
 
+**Note:** If the installer is unable to find the path, enter the path manually inside double quotes i.e. " ".
+
 ## Utilities
 
 ### Remove License and Configurations
